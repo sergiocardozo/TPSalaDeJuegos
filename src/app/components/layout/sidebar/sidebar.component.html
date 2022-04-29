@@ -1,0 +1,35 @@
+<div>
+
+  <div class="logo-container">
+    <button class="logo">SDJ</button>
+    <div class="logo-text">SalaDeJuegos</div>
+
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <button [routerLink]="['/home']" mat-button class="menu-button">
+    <mat-icon>home</mat-icon>
+    <span>Home</span>
+  </button>
+
+  <button [routerLink]="['/about']" mat-button class="menu-button">
+    <mat-icon>person</mat-icon>
+    <span>About</span>
+  </button>
+
+
+
+  <mat-divider class="d-flex align-items-end mt-5"></mat-divider>
+
+
+  <button [routerLink]="['/login']" mat-button class="menu-button" >
+    <mat-icon>login</mat-icon>
+    <span>LogIn</span>
+  </button>
+
+  <button [routerLink]="['/signup']" mat-button class="menu-button" >
+    <mat-icon>signup</mat-icon>
+    <span>Sign Up</span>
+  </button>
+</div>

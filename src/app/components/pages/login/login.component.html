@@ -1,0 +1,34 @@
+<div class="pt-5">
+
+    <div class="wrapper">
+        <div class="logo"> <img
+                src="https://www.freepnglogos.com/uploads/games-png/games-game-controller-icons-vector-icons-2.png"
+                alt="">
+        </div>
+        <div class="text-center mt-4 name"> Welcome! </div>
+        <p>Enter your email adress, and password to access admin panel</p>
+        <form class="p-3 mt-3" #registro='ngForm' (ngSubmit)="login(registro)" (ngSubmit)="testLogin(registro)">
+
+            <span class="text-danger" *ngIf="registro.submitted && registro.controls['email'].errors">El correo es
+                obligatorio</span>
+            <div class="form-field d-flex align-items-center">
+                <span class="far fa-envelope"></span>
+                <input type="email" name="email" id="email" placeholder="E-mail" [(ngModel)]="usuario.email" email
+                    required>
+            </div>
+            <span class="text-danger" *ngIf="registro.submitted && registro.controls['password'].errors">Debe contener 6
+                caracteres</span>
+
+            <div class="form-field d-flex align-items-center">
+                <span class="fas fa-key"></span>
+                <input type="password" name="password" id="pwd" placeholder="Password" [(ngModel)]="usuario.password"
+                    minlength="6" required>
+            </div>
+            <button class="btn mt-3" >Login</button>
+            <button class="btn mt-3"  >Login Test</button>
+        </form>
+        <div class="text-center fs-6">
+            <span>Create an Account </span> <a routerLink="/signup">Register</a>
+        </div>
+    </div>
+</div>

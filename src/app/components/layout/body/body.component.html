@@ -1,0 +1,38 @@
+<mat-toolbar class="mat-elevation-z8 bg-dark">
+
+    <button mat-button (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">
+            menu
+        </mat-icon>
+        <mat-icon *ngIf="sidenav.opened">
+            close
+        </mat-icon>
+    </button>
+
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="d-flex justify-content-end">
+            <span class="navbar-text px-3" (click)="getUserLogged()" *ngIf="emailUser|async as user">
+                Welcome {{ user.email }}
+            </span>
+            <button class="btn btn-outline-success"
+                    (click)="salir()" *ngIf="emailUser|async as user">
+                <mat-icon>logout</mat-icon>
+                <span>LogOut</span>
+            </button>
+
+        </div>
+    </nav>
+</mat-toolbar>
+<mat-sidenav-container>
+
+    <mat-sidenav class="bg-dark" mode="side" #sidenav="matSidenav">
+        <app-sidebar></app-sidebar>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="mat-elevation-z4">
+
+
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
