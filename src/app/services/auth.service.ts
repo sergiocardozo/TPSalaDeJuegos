@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
-import { first } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { UsuarioModel } from '../models/usuario.models';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 @Injectable({
@@ -43,7 +42,7 @@ export class AuthService {
     return this.auth.authState;
   }
   getCurrentUser() {
-    return !this.auth.authState;
+    return this.auth.authState.pipe(map( auth => auth ));
   }
   
 }

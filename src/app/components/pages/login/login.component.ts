@@ -21,14 +21,16 @@ export class LoginComponent implements OnInit {
   login(form: NgForm) {
     if (form.invalid) { return; }
 
-    this.auth.login(this.usuario.email,this.usuario.password).then(resp => {
+    this.auth.login(this.usuario.email, this.usuario.password)
+    .then(resp => {
       console.log(resp);
       this.router.navigate(['/home']);
+    }).catch((err) =>{
+      console.log(err);
     })
   }
 
   testLogin(form: NgForm) {
-    form.setValue({email: 'cuentatest@gmail.com', password: 'test1234'})
-    form.ngSubmit;
+    form.setValue({ email: 'cuentatest@gmail.com', password: 'test1234' })
   }
 }

@@ -12,11 +12,11 @@
 
     <nav class="navbar navbar-dark bg-dark">
         <div class="d-flex justify-content-end">
-            <span class="navbar-text px-3" (click)="getUserLogged()" *ngIf="emailUser|async as user">
-                Welcome {{ user.email }}
+            <span class="navbar-text px-3" *ngIf="isLogin">
+                Welcome {{ userEmail }}
             </span>
             <button class="btn btn-outline-success"
-                    (click)="salir()" *ngIf="emailUser|async as user">
+                    (click)="onLogOut()" *ngIf="isLogin">
                 <mat-icon>logout</mat-icon>
                 <span>LogOut</span>
             </button>

@@ -12,27 +12,31 @@ import { UsuarioModel } from 'src/app/models/usuario.models';
 })
 export class BodyComponent implements OnInit {
 
-  emailUser = this.auth.getUserLog();
+  isLogin: boolean;
+  userEmail: string;
+
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
 
-  constructor(private observer: BreakpointObserver,
-    private auth: AuthService,
-    private router: Router,
-  ) {
+  constructor( private auth: AuthService,
+    private router: Router
+  ) {  }
 
-  }
-
-  salir() {
+  onLogOut() {
     this.auth.logout();
     this.router.navigateByUrl('/login');
   }
-  getUserLogged() {
-    this.auth.getUserLog()
-      .subscribe(resp => {
-        console.log(resp?.email);
-      });
-  }
+  
   ngOnInit(): void {
+    this.auth.getCurrentUser()
+    .subscribe( auth => {
+      if( auth ) {
+        this.isLogin = true;
+        this.userEmail = auth.email;
+        console.log(auth.email)
+      } else {
+        this.isLogin = false;
+      }
+    })
   }
 
 }

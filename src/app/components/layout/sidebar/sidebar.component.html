@@ -8,8 +8,8 @@
 
   <mat-divider></mat-divider>
 
-  <button [routerLink]="['/home']" mat-button class="menu-button">
-    <mat-icon>home</mat-icon>
+  <button *ngIf="isLogin" [routerLink]="['/home']" mat-button class="menu-button">
+    <mat-icon>home</mat-icon> 
     <span>Home</span>
   </button>
 
@@ -18,18 +18,17 @@
     <span>About</span>
   </button>
 
-
-
   <mat-divider class="d-flex align-items-end mt-5"></mat-divider>
 
-
-  <button [routerLink]="['/login']" mat-button class="menu-button" >
+  <button *ngIf="!isLogin" [routerLink]="['/login']" mat-button class="menu-button">
     <mat-icon>login</mat-icon>
     <span>LogIn</span>
   </button>
 
-  <button [routerLink]="['/signup']" mat-button class="menu-button" >
-    <mat-icon>signup</mat-icon>
+  <button *ngIf="!isLogin" [routerLink]="['/signup']" mat-button class="menu-button">
+    <mat-icon>register</mat-icon>
     <span>Sign Up</span>
   </button>
+
+  
 </div>

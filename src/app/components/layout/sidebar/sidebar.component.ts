@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,18 +8,29 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
+  
+  public isLogin: boolean;
+  userName: string;
+  userEmail: string;
 
-  emailUser = this.auth.getCurrentUser();
-  constructor(private auth: AuthService) { 
+  constructor(private auth: AuthService, private router: Router) { 
   }
 
   ngOnInit(): void {
-    
+    this.auth.getCurrentUser()
+    .subscribe( auth => {
+      if( auth ) {
+        this.isLogin = true;
+        this.userName = auth.displayName;
+        this.userEmail = auth.email;
+      } else {
+        this.isLogin = false;
+      }
+    })
   }
-  getUserLogged() {
-    this.auth.getUserLog()
-      .subscribe(resp => {
-        console.log(resp?.email);
-      });
+  salir() {
+    this.auth.logout();
+    this.router.navigateByUrl('/login');
   }
+  
 }
