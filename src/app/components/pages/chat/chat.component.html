@@ -1,0 +1,31 @@
+<div *ngIf="usuario && !mostrarChat" class="chatIconContainer" (click)="mostrarChat=true">
+    <mat-icon class="chatIcon">message</mat-icon>
+</div>
+
+<div class="card text-center cardContainer" *ngIf="usuario && mostrarChat">
+    <div class="card-header ">
+        CHAT
+        <mat-icon (click)="mostrarChat=false" class="chatClose">close</mat-icon>
+    </div>
+    <div class="card-body" >
+        <div id="contenedorMensajes" class="contenedorMensajes h-100">
+            <p *ngFor="let chat of chatS.chats" class="mensaje p-2" 
+            [ngClass]="(usuario.uid==chat.uid)? 'enviado' : 'recibido'">
+            {{usuario.email}} {{chat.fecha | date :'short'}}
+            <br>
+            {{ chat.mensaje }}
+            </p>
+        </div>
+    </div>
+
+    <form class="card-footer text-muted input-group" (ngSubmit)="enviarMensaje()">
+        <input type="text" class="form-control" placeholder="Ingrese su Mensaje" [(ngModel)]="mensaje" [ngModelOptions]="{standalone: true}">
+        <div class="input-group-append" (click)="enviarMensaje()">
+
+            <span class="input-group-text" id="basic-addon2">
+                <mat-icon class="iconSend">send</mat-icon>
+
+            </span>
+        </div>
+    </form>
+</div>

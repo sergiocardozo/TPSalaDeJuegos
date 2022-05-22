@@ -95,9 +95,20 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "TPSalaDeJuegos:build:production",
+            "firebaseProject": "tpsaladejuegos-e4f04",
+            "firebaseHostingSite": "tpsaladejuegos-e4f04"
           }
         }
       }

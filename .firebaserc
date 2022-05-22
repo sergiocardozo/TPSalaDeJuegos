@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "tpsaladejuegos-e4f04"
+  },
+  "targets": {
+    "tpsaladejuegos-e4f04": {
+      "hosting": {
+        "TPSalaDeJuegos": [
+          "tpsaladejuegos-e4f04"
+        ]
+      }
+    }
   }
 }

@@ -39,7 +39,7 @@ export class AuthService {
   }
 
   getUserLog() {
-    return this.auth.authState;
+    return this.auth.currentUser;
   }
   getCurrentUser() {
     return this.auth.authState.pipe(map( auth => auth ));

@@ -7,7 +7,7 @@
         </div>
         <div class="text-center mt-4 name"> Welcome! </div>
         <p>Enter your email adress, and password to access admin panel</p>
-        <form class="p-3 mt-3" #registro='ngForm' (ngSubmit)="login(registro)" (ngSubmit)="testLogin(registro)">
+        <form class="p-3 mt-3" #registro='ngForm' (ngSubmit)="login(registro)">
 
             <span class="text-danger" *ngIf="registro.submitted && registro.controls['email'].errors">El correo es
                 obligatorio</span>
@@ -25,7 +25,7 @@
                     minlength="6" required>
             </div>
             <button class="btn mt-3" >Login</button>
-            <button class="btn mt-3"  >Login Test</button>
+            <button class="btn mt-3" (click)="testLogin(registro)" >Login Test</button>
         </form>
         <div class="text-center fs-6">
             <span>Create an Account </span> <a routerLink="/signup">Register</a>

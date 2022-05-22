@@ -4,15 +4,16 @@
 
 export const environment = {
   production: false,
-  firebaseConfig: {
+  firebaseConfig :{
     apiKey: "AIzaSyDNZf2GIcfUoO1rUiPd2yn6D92ttjAxnhA",
     authDomain: "tpsaladejuegos-e4f04.firebaseapp.com",
+    databaseURL: "https://tpsaladejuegos-e4f04-default-rtdb.firebaseio.com",
     projectId: "tpsaladejuegos-e4f04",
     storageBucket: "tpsaladejuegos-e4f04.appspot.com",
     messagingSenderId: "450618904326",
     appId: "1:450618904326:web:80a1e8678014dc47cc1887"
   }
-};
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

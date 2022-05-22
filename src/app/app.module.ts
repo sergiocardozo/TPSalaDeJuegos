@@ -9,23 +9,19 @@ import { LoginComponent } from './components/pages/login/login.component';
 import { SignupComponent } from './components/pages/signup/signup.component';
 import { AlertErrorComponent } from './components/shared/alert-error/alert-error.component';
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChatComponent } from './components/pages/chat/chat.component';
 
 import { MaterialModule } from 'src/material/material.module';
 import { BodyComponent } from './components/layout/body/body.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from 'src/environments/environment';
 
-
-const firebaseConfig = {
-  apiKey: "AIzaSyDNZf2GIcfUoO1rUiPd2yn6D92ttjAxnhA",
-  authDomain: "tpsaladejuegos-e4f04.firebaseapp.com",
-  projectId: "tpsaladejuegos-e4f04",
-  storageBucket: "tpsaladejuegos-e4f04.appspot.com",
-  messagingSenderId: "450618904326",
-  appId: "1:450618904326:web:80a1e8678014dc47cc1887"
-};
+import { ChatService } from './services/chat.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +32,8 @@ const firebaseConfig = {
     SignupComponent,
     AlertErrorComponent,
     SidebarComponent,
-    BodyComponent
+    BodyComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -45,10 +42,13 @@ const firebaseConfig = {
     MaterialModule,
     FormsModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
     ReactiveFormsModule,
+
   ],
-  providers: [],
+  providers: [ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
